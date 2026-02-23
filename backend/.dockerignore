@@ -1,0 +1,7 @@
+ciryt-api
+.env
+.git
+.gitignore
+*.md
+setup-db.sh
+docker-compose*.yml

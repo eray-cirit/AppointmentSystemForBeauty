@@ -1,0 +1,513 @@
+/* ============================================
+   AUTHENTICATION PAGES - SHARED STYLES
+   Liquid Glass Design with Themed Backgrounds
+   ============================================ */
+
+/* Ana container - Navbar yüksekliği çıkarılmış ekran */
+.authPage {
+    min-height: calc(100vh - 72px);
+    /* Navbar yüksekliği: 72px */
+    height: calc(100vh - 72px);
+    display: flex;
+    position: relative;
+    overflow: hidden;
+}
+
+/* ============================================
+   ARKA PLAN - PNG + VMAX BLUR
+   ============================================ */
+
+.backgroundImage {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 0;
+    pointer-events: none;
+    /* Orta blur - PNG yumuşak görünür */
+    filter: blur(4vmax) saturate(1.4) brightness(0.9);
+    opacity: 0.9;
+}
+
+.backgroundGlow {
+    position: fixed;
+    top: -10%;
+    left: -10%;
+    right: -10%;
+    bottom: -10%;
+    z-index: -1;
+    pointer-events: none;
+    /* Glow layer */
+    filter: blur(7vmax) saturate(1.6) brightness(1.15);
+    opacity: 0.4;
+}
+
+/* Erkek Tema Arka Planı */
+.maleTheme .backgroundImage {
+    background: url('/erkek_tema.png') no-repeat;
+    background-size: cover;
+    background-position: center;
+}
+
+.maleTheme .backgroundGlow {
+    background: url('/erkek_tema.png') no-repeat;
+    background-size: cover;
+    background-position: center;
+}
+
+/* Kadın Tema Arka Planı */
+.femaleTheme .backgroundImage {
+    background: url('/kadın_tema.png') no-repeat;
+    background-size: cover;
+    background-position: center;
+}
+
+.femaleTheme .backgroundGlow {
+    background: url('/kadın_tema.png') no-repeat;
+    background-size: cover;
+    background-position: center;
+}
+
+/* ============================================
+   LIQUID GLASS FORM CONTAINER
+   ============================================ */
+
+.formContainer {
+    position: relative;
+    z-index: 10;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    /* SAĞA YASLI ama biraz içeriden */
+    padding: 1rem 6rem 1rem 3rem;
+    width: 100%;
+}
+
+.glassCard {
+    background: rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(25px);
+    -webkit-backdrop-filter: blur(25px);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    border-radius: 18px;
+    padding: 1.25rem;
+    width: 100%;
+    max-width: 320px;
+    box-shadow:
+        0 8px 32px rgba(0, 0, 0, 0.06),
+        0 0 0 1px rgba(255, 255, 255, 0.08) inset;
+}
+
+/* Logo ve Başlık */
+.formHeader {
+    text-align: center;
+    margin-bottom: 0.75rem;
+}
+
+.logo {
+    font-size: 1.25rem;
+    font-weight: 800;
+    letter-spacing: 2px;
+    margin-bottom: 0.15rem;
+}
+
+.maleTheme .logo {
+    color: #bd6326;
+}
+
+.femaleTheme .logo {
+    color: #72223f;
+}
+
+.formTitle {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: #1a1a1a;
+    margin-bottom: 0.15rem;
+}
+
+.formSubtitle {
+    font-size: 0.8rem;
+    color: #666;
+}
+
+/* ============================================
+   FORM ELEMENTS - GLASSMORPHISM
+   ============================================ */
+
+.formGroup {
+    margin-bottom: 0.6rem;
+}
+
+.inputLabel {
+    display: block;
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: #333;
+    margin-bottom: 0.3rem;
+}
+
+.inputField {
+    width: 100%;
+    padding: 0.55rem 0.75rem;
+    background: rgba(255, 255, 255, 0.4);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    border-radius: 8px;
+    font-size: 0.85rem;
+    color: #1a1a1a;
+    transition: all 0.3s ease;
+    outline: none;
+}
+
+.inputField::placeholder {
+    color: #888;
+}
+
+.inputField:focus {
+    border-color: rgba(255, 255, 255, 0.8);
+    box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.2);
+}
+
+.maleTheme .inputField:focus {
+    border-color: rgba(189, 99, 38, 0.5);
+    box-shadow: 0 0 0 3px rgba(189, 99, 38, 0.15);
+}
+
+.femaleTheme .inputField:focus {
+    border-color: rgba(114, 34, 63, 0.5);
+    box-shadow: 0 0 0 3px rgba(114, 34, 63, 0.15);
+}
+
+/* İsim alanları yan yana */
+.nameRow {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.6rem;
+}
+
+/* ============================================
+   BUTTONS
+   ============================================ */
+
+.submitButton {
+    width: 100%;
+    padding: 0.7rem;
+    border: none;
+    border-radius: 10px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: white;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin-top: 0.25rem;
+}
+
+.maleTheme .submitButton {
+    background: linear-gradient(135deg, #bd6326 0%, #a04f1a 100%);
+}
+
+.femaleTheme .submitButton {
+    background: linear-gradient(135deg, #72223f 0%, #5a1a32 100%);
+}
+
+.submitButton:hover {
+    transform: translateY(-2px);
+    filter: brightness(1.1);
+}
+
+.submitButton:active {
+    transform: translateY(0);
+}
+
+.submitButton:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+    transform: none;
+}
+
+/* ============================================
+   DIVIDER
+   ============================================ */
+
+.divider {
+    display: flex;
+    align-items: center;
+    margin: 0.75rem 0;
+    gap: 0.75rem;
+}
+
+.dividerLine {
+    flex: 1;
+    height: 1px;
+    background: rgba(0, 0, 0, 0.1);
+}
+
+.dividerText {
+    font-size: 0.75rem;
+    color: #666;
+    font-weight: 500;
+}
+
+/* ============================================
+   GOOGLE BUTTON
+   ============================================ */
+
+.googleButton {
+    width: 100%;
+    padding: 0.6rem;
+    background: rgba(255, 255, 255, 0.5);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid rgba(0, 0, 0, 0.08);
+    border-radius: 10px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: #333;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+}
+
+.googleButton:hover {
+    background: rgba(255, 255, 255, 0.7);
+    border-color: rgba(0, 0, 0, 0.12);
+    transform: translateY(-1px);
+}
+
+.googleIcon {
+    width: 16px;
+    height: 16px;
+}
+
+/* ============================================
+   FOOTER LINKS
+   ============================================ */
+
+.formFooter {
+    text-align: center;
+    margin-top: 0.75rem;
+    font-size: 0.8rem;
+    color: #666;
+}
+
+.formLink {
+    font-weight: 600;
+    text-decoration: none;
+    transition: color 0.2s ease;
+}
+
+.maleTheme .formLink {
+    color: #bd6326;
+}
+
+.femaleTheme .formLink {
+    color: #72223f;
+}
+
+.formLink:hover {
+    text-decoration: underline;
+}
+
+/* ============================================
+   ERROR MESSAGE
+   ============================================ */
+
+.errorMessage {
+    background: rgba(220, 53, 69, 0.1);
+    border: 1px solid rgba(220, 53, 69, 0.3);
+    border-radius: 8px;
+    padding: 0.75rem 1rem;
+    margin-bottom: 1rem;
+    color: #dc3545;
+    font-size: 0.875rem;
+    text-align: center;
+}
+
+/* ============================================
+   SUCCESS MESSAGE
+   ============================================ */
+
+.successMessage {
+    background: rgba(40, 167, 69, 0.1);
+    border: 1px solid rgba(40, 167, 69, 0.3);
+    border-radius: 8px;
+    padding: 0.75rem 1rem;
+    margin-bottom: 1rem;
+    color: #28a745;
+    font-size: 0.875rem;
+    text-align: center;
+}
+
+/* ============================================
+   PASSWORD STRENGTH INDICATOR
+   ============================================ */
+
+.passwordStrength {
+    margin-top: 0.5rem;
+}
+
+.strengthBar {
+    height: 4px;
+    background: rgba(0, 0, 0, 0.1);
+    border-radius: 2px;
+    overflow: hidden;
+}
+
+.strengthFill {
+    height: 100%;
+    transition: all 0.3s ease;
+    border-radius: 2px;
+}
+
+.strengthFill.weak {
+    width: 33%;
+    background: #dc3545;
+}
+
+.strengthFill.medium {
+    width: 66%;
+    background: #ffc107;
+}
+
+.strengthFill.strong {
+    width: 100%;
+    background: #28a745;
+}
+
+.strengthText {
+    font-size: 0.75rem;
+    margin-top: 0.25rem;
+    color: #666;
+}
+
+/* ============================================
+   LOADING SPINNER
+   ============================================ */
+
+.spinner {
+    width: 20px;
+    height: 20px;
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    border-top-color: white;
+    border-radius: 50%;
+    animation: spin 0.8s linear infinite;
+    display: inline-block;
+    margin-right: 0.5rem;
+}
+
+@keyframes spin {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+/* ============================================
+   BACK BUTTON
+   ============================================ */
+
+.backButton {
+    position: absolute;
+    top: 2rem;
+    left: 2rem;
+    z-index: 20;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.75rem 1.25rem;
+    background: rgba(255, 255, 255, 0.3);
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+    border: 1px solid rgba(255, 255, 255, 0.4);
+    border-radius: 12px;
+    font-size: 0.9rem;
+    font-weight: 500;
+    color: #333;
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+
+.backButton:hover {
+    background: rgba(255, 255, 255, 0.5);
+    transform: translateX(-3px);
+}
+
+.backIcon {
+    font-size: 1.2rem;
+}
+
+/* ============================================
+   RESPONSIVE
+   ============================================ */
+
+/* Tablet - Yatay */
+@media (max-width: 1024px) {
+    .formContainer {
+        padding: 1rem 3rem;
+    }
+
+    .glassCard {
+        max-width: 340px;
+    }
+}
+
+/* Tablet - Dikey */
+@media (max-width: 768px) {
+    .authPage {
+        height: auto;
+        min-height: calc(100vh - 72px);
+        overflow-y: auto;
+    }
+
+    .formContainer {
+        padding: 1rem;
+        justify-content: center;
+    }
+
+    .glassCard {
+        padding: 1.5rem;
+        max-width: 100%;
+    }
+
+    .nameRow {
+        grid-template-columns: 1fr;
+    }
+
+    .backButton {
+        top: 0.75rem;
+        left: 0.75rem;
+        padding: 0.5rem 0.75rem;
+        font-size: 0.8rem;
+    }
+}
+
+/* Mobil */
+@media (max-width: 480px) {
+    .formContainer {
+        padding: 0.75rem;
+    }
+
+    .glassCard {
+        padding: 1.25rem;
+        border-radius: 20px;
+    }
+
+    .logo {
+        font-size: 1.5rem;
+    }
+
+    .formTitle {
+        font-size: 1rem;
+    }
+
+    .backButton {
+        top: 0.5rem;
+        left: 0.5rem;
+        padding: 0.4rem 0.6rem;
+        font-size: 0.75rem;
+    }
+}

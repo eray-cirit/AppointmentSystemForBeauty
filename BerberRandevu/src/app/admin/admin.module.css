@@ -1,0 +1,286 @@
+/* ============================================
+   ADMIN PANEL STYLES
+   Turuncu-Pembe Gradient Tema
+   ============================================ */
+
+.adminPage {
+    min-height: 100vh;
+    background: linear-gradient(135deg, #FEF0E8 0%, #FDF5F7 50%, #FCE8EC 100%);
+    padding: 2rem;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* Header */
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 2rem;
+    padding: 1.5rem 2rem;
+    background: rgba(255, 255, 255, 0.6);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border-radius: 20px;
+    border: 1px solid rgba(255, 255, 255, 0.5);
+}
+
+.title {
+    font-size: 1.75rem;
+    font-weight: 700;
+    background: linear-gradient(135deg, #bd6326 0%, #72223f 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.subtitle {
+    font-size: 0.9rem;
+    color: #666;
+    margin-top: 0.25rem;
+}
+
+.backButton {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.75rem 1.5rem;
+    background: linear-gradient(135deg, #bd6326 0%, #72223f 100%);
+    color: white;
+    border: none;
+    border-radius: 12px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    cursor: pointer;
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+
+.backButton:hover {
+    transform: translateY(-2px);
+    filter: brightness(1.1);
+}
+
+/* Stats Cards */
+.statsGrid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+}
+
+.statCard {
+    background: rgba(255, 255, 255, 0.7);
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+    border-radius: 16px;
+    padding: 1.5rem;
+    border: 1px solid rgba(255, 255, 255, 0.5);
+}
+
+.statLabel {
+    font-size: 0.85rem;
+    color: #666;
+    margin-bottom: 0.5rem;
+}
+
+.statValue {
+    font-size: 2rem;
+    font-weight: 700;
+    background: linear-gradient(135deg, #bd6326 0%, #72223f 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+/* Users Table */
+.tableCard {
+    background: rgba(255, 255, 255, 0.7);
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+    border-radius: 20px;
+    padding: 1.5rem;
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    overflow: hidden;
+}
+
+.tableHeader {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.tableTitle {
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: #333;
+}
+
+.refreshButton {
+    padding: 0.5rem 1rem;
+    background: rgba(0, 0, 0, 0.05);
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    font-size: 0.85rem;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.refreshButton:hover {
+    background: rgba(0, 0, 0, 0.1);
+}
+
+.table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.table th {
+    text-align: left;
+    padding: 0.75rem 1rem;
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: #666;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.table td {
+    padding: 1rem;
+    font-size: 0.9rem;
+    color: #333;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.table tr:last-child td {
+    border-bottom: none;
+}
+
+.table tr:hover {
+    background: rgba(0, 0, 0, 0.02);
+}
+
+/* Gender Badge */
+.genderBadge {
+    display: inline-block;
+    padding: 0.25rem 0.75rem;
+    border-radius: 20px;
+    font-size: 0.75rem;
+    font-weight: 600;
+}
+
+.genderBadge.male {
+    background: rgba(189, 99, 38, 0.15);
+    color: #bd6326;
+}
+
+.genderBadge.female {
+    background: rgba(114, 34, 63, 0.15);
+    color: #72223f;
+}
+
+/* Role Badge */
+.roleBadge {
+    display: inline-block;
+    padding: 0.25rem 0.75rem;
+    border-radius: 20px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    background: rgba(0, 0, 0, 0.08);
+    color: #555;
+}
+
+.roleBadge.admin {
+    background: linear-gradient(135deg, rgba(189, 99, 38, 0.2) 0%, rgba(114, 34, 63, 0.2) 100%);
+    color: #72223f;
+}
+
+/* Delete Button */
+.deleteButton {
+    padding: 0.4rem 0.8rem;
+    background: rgba(220, 53, 69, 0.1);
+    color: #dc3545;
+    border: 1px solid rgba(220, 53, 69, 0.2);
+    border-radius: 8px;
+    font-size: 0.8rem;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.deleteButton:hover {
+    background: rgba(220, 53, 69, 0.2);
+}
+
+/* Empty State */
+.emptyState {
+    text-align: center;
+    padding: 3rem;
+    color: #666;
+}
+
+.emptyIcon {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+}
+
+.emptyText {
+    font-size: 1rem;
+}
+
+/* Loading */
+.loading {
+    text-align: center;
+    padding: 3rem;
+    color: #666;
+}
+
+.spinner {
+    width: 40px;
+    height: 40px;
+    border: 3px solid rgba(0, 0, 0, 0.1);
+    border-top-color: #bd6326;
+    border-radius: 50%;
+    animation: spin 0.8s linear infinite;
+    margin: 0 auto 1rem;
+}
+
+@keyframes spin {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+/* Date Format */
+.dateText {
+    font-size: 0.8rem;
+    color: #888;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .adminPage {
+        padding: 1rem;
+    }
+
+    .header {
+        flex-direction: column;
+        gap: 1rem;
+        text-align: center;
+    }
+
+    .tableCard {
+        padding: 1rem;
+        overflow-x: auto;
+    }
+
+    .table {
+        min-width: 600px;
+    }
+}

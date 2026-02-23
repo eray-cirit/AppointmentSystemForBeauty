@@ -1,0 +1,253 @@
+.page {
+    min-height: 100vh;
+    padding: 24px;
+    background: linear-gradient(180deg, #f8f9fa 0%, #e9ecef 100%);
+}
+
+.maleTheme {
+    background: linear-gradient(180deg, #fff8f0 0%, #ffe8d6 100%);
+}
+
+.femaleTheme {
+    background: linear-gradient(180deg, #fff0f5 0%, #ffe4ec 100%);
+}
+
+.container {
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.backButton {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 16px;
+    background: rgba(255, 255, 255, 0.8);
+    backdrop-filter: blur(10px);
+    border-radius: 12px;
+    color: #333;
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 500;
+    font-family: 'Outfit', sans-serif;
+    margin-bottom: 24px;
+    transition: all 0.2s ease;
+}
+
+.backButton:hover {
+    background: rgba(255, 255, 255, 1);
+    transform: translateX(-2px);
+}
+
+.header {
+    text-align: center;
+    margin-bottom: 32px;
+}
+
+.title {
+    margin: 0;
+    font-size: 32px;
+    font-weight: 700;
+    font-family: 'Outfit', sans-serif;
+    color: #1a1a1a;
+}
+
+.subtitle {
+    margin: 8px 0 0 0;
+    font-size: 16px;
+    color: #666;
+    font-family: 'Outfit', sans-serif;
+}
+
+.profileCard {
+    background: rgba(255, 255, 255, 0.9);
+    backdrop-filter: blur(20px);
+    border-radius: 24px;
+    padding: 32px;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08);
+    border: 1px solid rgba(255, 255, 255, 0.5);
+}
+
+.avatarSection {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    padding-bottom: 24px;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+    margin-bottom: 24px;
+}
+
+.avatar {
+    width: 72px;
+    height: 72px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 28px;
+    font-weight: 700;
+    color: white;
+    font-family: 'Outfit', sans-serif;
+}
+
+.maleTheme .avatar {
+    background: linear-gradient(135deg, #bd6326, #a05520);
+}
+
+.femaleTheme .avatar {
+    background: linear-gradient(135deg, #72223f, #5a1b32);
+}
+
+.userInfo {
+    flex: 1;
+}
+
+.userName {
+    margin: 0;
+    font-size: 22px;
+    font-weight: 700;
+    font-family: 'Outfit', sans-serif;
+    color: #1a1a1a;
+}
+
+.userRole {
+    display: inline-block;
+    margin-top: 4px;
+    font-size: 14px;
+    color: #666;
+    font-family: 'Outfit', sans-serif;
+}
+
+.infoList {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.infoItem {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 12px;
+    padding: 16px;
+    background: rgba(0, 0, 0, 0.02);
+    border-radius: 14px;
+}
+
+.infoLabel {
+    font-size: 14px;
+    color: #888;
+    font-family: 'Outfit', sans-serif;
+    min-width: 120px;
+}
+
+.infoValue {
+    flex: 1;
+    font-size: 15px;
+    font-weight: 500;
+    color: #333;
+    font-family: 'Outfit', sans-serif;
+}
+
+.changeBtn {
+    padding: 8px 16px;
+    font-size: 13px;
+    font-weight: 600;
+    font-family: 'Outfit', sans-serif;
+    border-radius: 10px;
+    text-decoration: none;
+    transition: all 0.2s ease;
+}
+
+.maleTheme .changeBtn {
+    background: rgba(189, 99, 38, 0.1);
+    color: #bd6326;
+}
+
+.maleTheme .changeBtn:hover {
+    background: rgba(189, 99, 38, 0.2);
+}
+
+.femaleTheme .changeBtn {
+    background: rgba(114, 34, 63, 0.1);
+    color: #72223f;
+}
+
+.femaleTheme .changeBtn:hover {
+    background: rgba(114, 34, 63, 0.2);
+}
+
+.logoutBtn {
+    display: block;
+    width: 100%;
+    margin-top: 24px;
+    padding: 16px;
+    font-size: 16px;
+    font-weight: 600;
+    font-family: 'Outfit', sans-serif;
+    background: rgba(220, 53, 69, 0.1);
+    color: #dc3545;
+    border: none;
+    border-radius: 14px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.logoutBtn:hover {
+    background: rgba(220, 53, 69, 0.2);
+}
+
+.loadingPage {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 16px;
+    font-family: 'Outfit', sans-serif;
+    color: #666;
+}
+
+.spinner {
+    width: 40px;
+    height: 40px;
+    border: 3px solid rgba(0, 0, 0, 0.1);
+    border-top-color: #bd6326;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+/* Responsive */
+@media (max-width: 480px) {
+    .page {
+        padding: 16px;
+    }
+
+    .title {
+        font-size: 26px;
+    }
+
+    .profileCard {
+        padding: 20px;
+    }
+
+    .avatarSection {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .infoItem {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .infoLabel {
+        min-width: auto;
+    }
+}

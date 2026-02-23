@@ -1,0 +1,48 @@
+.page {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(180deg, #f8f9fa 0%, #e9ecef 100%);
+}
+
+.maleTheme {
+    background: linear-gradient(180deg, #fff8f0 0%, #ffe8d6 100%);
+}
+
+.femaleTheme {
+    background: linear-gradient(180deg, #fff0f5 0%, #ffe4ec 100%);
+}
+
+.loadingPage {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 16px;
+    font-family: 'Outfit', sans-serif;
+    color: #666;
+}
+
+.spinner {
+    width: 40px;
+    height: 40px;
+    border: 3px solid rgba(0, 0, 0, 0.1);
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+}
+
+.maleTheme .spinner {
+    border-top-color: #bd6326;
+}
+
+.femaleTheme .spinner {
+    border-top-color: #72223f;
+}
+
+@keyframes spin {
+    to {
+        transform: rotate(360deg);
+    }
+}

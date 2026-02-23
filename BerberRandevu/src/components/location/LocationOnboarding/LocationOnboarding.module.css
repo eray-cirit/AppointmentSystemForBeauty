@@ -1,0 +1,602 @@
+/* ============================================
+   LOCATION ONBOARDING MODAL
+   Full-screen step-by-step wizard
+   ============================================ */
+
+.overlay {
+    position: fixed;
+    inset: 0;
+    z-index: 9999;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    background: rgba(0, 0, 0, 0.6);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    animation: fadeIn 0.3s ease;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+.modal {
+    width: 100%;
+    max-width: 480px;
+    max-height: 90vh;
+    background: white;
+    border-radius: 24px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+    animation: slideUp 0.3s ease;
+}
+
+@keyframes slideUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Header */
+.header {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    padding: 24px 24px 16px;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+}
+
+.backBtn {
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 20px;
+    background: rgba(0, 0, 0, 0.05);
+    border: none;
+    border-radius: 12px;
+    cursor: pointer;
+    transition: background 0.2s ease;
+}
+
+.backBtn:hover {
+    background: rgba(0, 0, 0, 0.1);
+}
+
+.headerContent {
+    flex: 1;
+}
+
+.title {
+    margin: 0;
+    font-size: 22px;
+    font-weight: 700;
+    font-family: 'Outfit', sans-serif;
+    color: #1a1a1a;
+}
+
+.subtitle {
+    margin: 4px 0 0 0;
+    font-size: 14px;
+    color: #666;
+    font-family: 'Outfit', sans-serif;
+}
+
+/* Progress */
+.progress {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0;
+    padding: 20px 24px;
+}
+
+.progressStep {
+    width: 32px;
+    height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 14px;
+    font-weight: 600;
+    font-family: 'Outfit', sans-serif;
+    background: rgba(0, 0, 0, 0.08);
+    color: #999;
+    border-radius: 50%;
+    transition: all 0.3s ease;
+}
+
+.progressStep.active {
+    color: white;
+}
+
+.male .progressStep.active {
+    background: linear-gradient(135deg, #bd6326, #a04f1a);
+}
+
+.female .progressStep.active {
+    background: linear-gradient(135deg, #72223f, #5a1a32);
+}
+
+.progressLine {
+    width: 40px;
+    height: 3px;
+    background: rgba(0, 0, 0, 0.08);
+    border-radius: 2px;
+    transition: background 0.3s ease;
+}
+
+.male .progressLine.active {
+    background: #bd6326;
+}
+
+.female .progressLine.active {
+    background: #72223f;
+}
+
+/* GPS Section */
+.gpsSection {
+    margin-bottom: 20px;
+}
+
+.gpsButton {
+    width: 100%;
+    padding: 16px 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    font-size: 16px;
+    font-weight: 600;
+    font-family: 'Outfit', sans-serif;
+    border: 2px dashed rgba(0, 0, 0, 0.15);
+    border-radius: 14px;
+    background: rgba(0, 0, 0, 0.02);
+    color: #333;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.gpsButton:hover:not(:disabled) {
+    background: rgba(0, 0, 0, 0.05);
+    border-color: rgba(0, 0, 0, 0.25);
+}
+
+.gpsButton:disabled {
+    opacity: 0.7;
+    cursor: not-allowed;
+}
+
+.male .gpsButton:hover:not(:disabled) {
+    border-color: rgba(189, 99, 38, 0.4);
+    background: rgba(189, 99, 38, 0.05);
+}
+
+.female .gpsButton:hover:not(:disabled) {
+    border-color: rgba(114, 34, 63, 0.4);
+    background: rgba(114, 34, 63, 0.05);
+}
+
+.gpsSpinner {
+    width: 18px;
+    height: 18px;
+    border: 2px solid rgba(0, 0, 0, 0.1);
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+}
+
+.male .gpsSpinner {
+    border-top-color: #bd6326;
+}
+
+.female .gpsSpinner {
+    border-top-color: #72223f;
+}
+
+.gpsError {
+    margin: 12px 0 0 0;
+    padding: 10px 14px;
+    font-size: 13px;
+    color: #c53030;
+    background: rgba(197, 48, 48, 0.08);
+    border-radius: 10px;
+    text-align: center;
+    font-family: 'Outfit', sans-serif;
+}
+
+.divider {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin: 20px 0;
+}
+
+.divider::before,
+.divider::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: rgba(0, 0, 0, 0.1);
+}
+
+.divider span {
+    font-size: 13px;
+    color: #888;
+    font-family: 'Outfit', sans-serif;
+    white-space: nowrap;
+}
+
+/* Content */
+.content {
+    flex: 1;
+    padding: 0 24px 24px;
+    overflow-y: auto;
+}
+
+/* Search Box */
+.searchBox {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 14px 18px;
+    background: rgba(0, 0, 0, 0.04);
+    border-radius: 14px;
+    margin-bottom: 16px;
+}
+
+.searchIcon {
+    font-size: 18px;
+}
+
+.searchInput {
+    flex: 1;
+    border: none;
+    background: transparent;
+    font-size: 16px;
+    font-family: 'Outfit', sans-serif;
+    outline: none;
+}
+
+.searchInput::placeholder {
+    color: #999;
+}
+
+/* List */
+.list {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    max-height: 350px;
+    overflow-y: auto;
+}
+
+.listItem {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    padding: 16px 18px;
+    background: rgba(0, 0, 0, 0.02);
+    border: 1px solid rgba(0, 0, 0, 0.06);
+    border-radius: 14px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    text-align: left;
+    font-family: 'Outfit', sans-serif;
+}
+
+.listItem:hover {
+    background: rgba(0, 0, 0, 0.05);
+    transform: translateX(4px);
+}
+
+.male .listItem:hover {
+    border-color: rgba(189, 99, 38, 0.3);
+    background: rgba(189, 99, 38, 0.05);
+}
+
+.female .listItem:hover {
+    border-color: rgba(114, 34, 63, 0.3);
+    background: rgba(114, 34, 63, 0.05);
+}
+
+.itemIcon {
+    font-size: 24px;
+}
+
+.itemName {
+    flex: 1;
+    font-size: 16px;
+    font-weight: 500;
+    color: #333;
+}
+
+.arrow {
+    font-size: 16px;
+    color: #999;
+}
+
+.noResults {
+    padding: 40px;
+    text-align: center;
+    font-size: 14px;
+    color: #888;
+    font-family: 'Outfit', sans-serif;
+}
+
+/* Loading */
+.loading {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 16px;
+    padding: 60px;
+    color: #666;
+    font-family: 'Outfit', sans-serif;
+}
+
+.spinner {
+    width: 32px;
+    height: 32px;
+    border: 3px solid rgba(0, 0, 0, 0.1);
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+}
+
+.male .spinner {
+    border-top-color: #bd6326;
+}
+
+.female .spinner {
+    border-top-color: #72223f;
+}
+
+@keyframes spin {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+/* Neighborhood Step */
+.neighborhoodStep {
+    padding-top: 20px;
+}
+
+.locationSummary {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    padding: 16px;
+    background: rgba(0, 0, 0, 0.03);
+    border-radius: 12px;
+    margin-bottom: 24px;
+    font-size: 15px;
+    font-family: 'Outfit', sans-serif;
+    color: #333;
+}
+
+.checkIcon {
+    font-size: 20px;
+}
+
+.inputGroup {
+    margin-bottom: 24px;
+}
+
+.inputLabel {
+    display: block;
+    font-size: 14px;
+    font-weight: 500;
+    color: #555;
+    margin-bottom: 10px;
+    font-family: 'Outfit', sans-serif;
+}
+
+.textInput {
+    width: 100%;
+    padding: 16px 18px;
+    font-size: 16px;
+    font-family: 'Outfit', sans-serif;
+    border: 2px solid rgba(0, 0, 0, 0.1);
+    border-radius: 14px;
+    background: rgba(0, 0, 0, 0.02);
+    transition: all 0.2s ease;
+    outline: none;
+}
+
+.textInput:focus {
+    border-color: rgba(0, 0, 0, 0.2);
+    background: white;
+}
+
+.male .textInput:focus {
+    border-color: rgba(189, 99, 38, 0.4);
+}
+
+.female .textInput:focus {
+    border-color: rgba(114, 34, 63, 0.4);
+}
+
+.completeBtn {
+    width: 100%;
+    padding: 18px;
+    font-size: 17px;
+    font-weight: 600;
+    font-family: 'Outfit', sans-serif;
+    border: none;
+    border-radius: 14px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    color: white;
+}
+
+.male .completeBtn {
+    background: linear-gradient(135deg, #bd6326, #a04f1a);
+}
+
+.female .completeBtn {
+    background: linear-gradient(135deg, #72223f, #5a1a32);
+}
+
+.completeBtn:hover:not(:disabled) {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+}
+
+.completeBtn:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+/* Responsive */
+@media (max-width: 480px) {
+    .overlay {
+        padding: 0;
+        align-items: flex-end;
+    }
+
+    .modal {
+        max-width: 100%;
+        max-height: 85vh;
+        border-radius: 24px 24px 0 0;
+    }
+
+    .header {
+        padding: 20px 20px 14px;
+    }
+
+    .title {
+        font-size: 20px;
+    }
+
+    .content {
+        padding: 0 20px 20px;
+    }
+
+    .list {
+        /* Dynamic max-height based on viewport */
+        max-height: min(280px, 40vh);
+    }
+
+    .listItem {
+        padding: 14px 16px;
+    }
+
+    .searchBox {
+        padding: 12px 14px;
+    }
+
+    .searchInput {
+        font-size: 15px;
+    }
+
+    .completeBtn {
+        padding: 16px;
+        font-size: 16px;
+    }
+}
+
+@media (max-width: 360px) {
+    .modal {
+        max-height: 90vh;
+        border-radius: 20px 20px 0 0;
+    }
+
+    .header {
+        padding: 16px 16px 12px;
+        gap: 12px;
+    }
+
+    .backBtn {
+        width: 36px;
+        height: 36px;
+        font-size: 18px;
+    }
+
+    .title {
+        font-size: 18px;
+    }
+
+    .subtitle {
+        font-size: 13px;
+    }
+
+    .progress {
+        padding: 16px 20px;
+    }
+
+    .progressStep {
+        width: 28px;
+        height: 28px;
+        font-size: 12px;
+    }
+
+    .progressLine {
+        width: 30px;
+    }
+
+    .content {
+        padding: 0 16px 16px;
+    }
+
+    .searchBox {
+        padding: 10px 12px;
+        margin-bottom: 12px;
+    }
+
+    .searchInput {
+        font-size: 14px;
+    }
+
+    .list {
+        max-height: min(250px, 35vh);
+        gap: 6px;
+    }
+
+    .listItem {
+        padding: 12px 14px;
+        gap: 12px;
+        border-radius: 12px;
+    }
+
+    .itemIcon {
+        font-size: 20px;
+    }
+
+    .itemName {
+        font-size: 14px;
+    }
+
+    .textInput {
+        padding: 14px 16px;
+        font-size: 15px;
+    }
+
+    .completeBtn {
+        padding: 14px;
+        font-size: 15px;
+        border-radius: 12px;
+    }
+
+    .locationSummary {
+        padding: 12px;
+        font-size: 14px;
+    }
+}
